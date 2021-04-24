@@ -16,7 +16,7 @@ An eBay-like e-commerce auction site that allows users to post auction listings,
 #### 1. Make a New Listing
 - Via 'CREATE LISTING' on the main tab.
 - Users are required to input a title, description, starting bid price, image (optional) and category.
-- Once submitted, user is directly diverted to the new listing page created
+- Once submitted, user is redirected to the new listing page created
 
 #### 2. Make a Bid
 - Via the 'BID' field within the individual listing page.
@@ -33,19 +33,18 @@ An eBay-like e-commerce auction site that allows users to post auction listings,
 - Comments are displayed in reverse-chronological order.
 
 ### 5. Close a Listing
-- Only the author of a listing is able to close it.
-- Done via the 'CLOSE LISTING' button at the end of each individual listing page.
+- Done via the 'CLOSE LISTING' button at the end of the individual listing page.
+- This is only visible to the owner of a listing (only the owner can close the listing).
 - When listing is closed,
     - the highest bidder is noted as the winner of the auction,
-    - the listing is deactived, and
-    - users can no longer bid/add to watchlist/comment on listing
-- However, listing can still be found via the search bar.
-- If the curent user is on a closed listing page, and they have won the auction, the page will announce so to the user.
+    - the listing is deactived (i.e. not visible on the ACTIVE LISTING page), and
+    - users can no longer bid/add to watchlist/comment on the listing
+- If the curent user is on a closed listing page, and they are the highest bidder, the page will announce the user as the winner of the auction.
 
 ### 6. Search for Listing
 - Via the search bar in the main menu.
 - The search goes through the listing **title** database.
-- Users are directed to a search result page with potential listings that contain the search query as a substring in their title. (eg. 'apple' will show 'Apple iPhone 12 Pro Max' as a search result).
+- Users are directed to a search result page with potential listings that contain the search query as a substring in their title (eg. 'apple' will show 'Apple iPhone 12 Pro Max' as a search result).
 
 
 ## Page Views
@@ -59,23 +58,23 @@ An eBay-like e-commerce auction site that allows users to post auction listings,
 - Shows all details of the listing, bids and comments
 
 #### 3. Category 
-- view.py: name = category
+- views.py: name = category
 - Shows listings of a particular category (category is determined during the listing creation). 
 
 #### 4. Watchlist
-- view.py: name = watchlist
+- views.py: name = watchlist
 - Shows all listings that the user has chose to add to their watchlist.
 
 #### 5. Create listing
-- view.py: name = create
+- views.py: name = create
 - For users to create their page listings.
 
 #### 6. Search results page
-- view.py: name = search
+- views.py: name = search
 - Shows results from a user's search.
 
 #### 7. Login
-- view.py: name = login
+- views.py: name = login
 
 #### 8. Register
-- view.py: name = register
+- views.py: name = register
