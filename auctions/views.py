@@ -15,7 +15,6 @@ def index(request):
         "view": 'ACTIVE LISTINGS'
     })
 
-
 # Create a new listing
 def create(request):
     # Make sure info came in via a POST request
