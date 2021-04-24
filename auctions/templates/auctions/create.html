@@ -1,0 +1,34 @@
+{% extends "auctions/layout.html" %}
+
+{% block heading %} Create New Listing {% endblock %}
+
+{% block body %}
+<div id='new'>
+    <form action="{% url 'create' %}" enctype="multipart/form-data" method='post' id='new_form'>
+        {% csrf_token %}
+        <label>Listing Title:</label>
+        <input type='text' name='title' placeholder='Listing Title' maxlength=70 required>
+        <br><br>
+        <label>Description:</label>
+        <textarea name='description' rows="4" cols="50" maxlength=300 placeholder="Give a text-based description (no more than 300 characters)." required> </textarea>
+        <br><br>
+        <label>Starting Bid: </label>
+        £ <input type='number' name='start_bid' placeholder='Starting Bid' required>
+        <br><br>
+        <label>Upload Image (Optional):</label>
+        <input type='file' name='image'>
+        <br><br>
+        <label>Category:</label>
+        <select name='category'>
+            <option value = 'Home and Garden'>Home & Garden</option>
+            <option value = 'Electronics'>Electronics</option>
+            <option value = 'Fashion'>Fashion</option>
+            <option value = 'Health and Beauty'>Health & Beauty</option>
+            <option value = 'Toys'>Toys</option>
+            <option value = 'Others'>Others</option>
+        </select>
+        <br><br>
+        <input type='submit' value='Create Listing' class='buttons' id='submit_new'>
+    </form>
+</div>
+{% endblock %}

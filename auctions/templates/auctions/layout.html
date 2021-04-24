@@ -1,0 +1,83 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Auctions</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'auctions/styles.css' %}" rel="stylesheet">
+        <link rel="apple-touch-icon" sizes="180x180" href="{% static 'auctions/apple-touch-icon' %}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'auctions/favicon-32x32.png' %}" >
+        <link rel="icon" type="image/png" sizes="16x16" href="{% static 'auctions/favicon-16x16.png' %}" >
+        <link rel="manifest" href="{% static 'auctions/site.webmanifest' %}" >
+        <script src="{% static 'auctions/navbar.js' %}"></script>
+    </head>
+    <body>
+        <div id='top'>
+            <div id='top_1'>
+                <h1 id='top_heading'><a href="{% url 'index' %}"> auctions </a></h1>
+                <form id='search_bar' action="{% url 'search' %}" method='post'>
+                    {% csrf_token %}
+                    <input type="text" id='search' name='search' placeholder="Search for...">
+                </form>
+                <div id='login_status'>
+                    <ul class="nav">
+                        <li class='nav-item' id='top_username'>
+                            {% if user.is_authenticated %}
+                            <span id='top_welcome'>Welcome, </span><br>
+                            <strong>{{ user.username }}</strong>!
+                            {% else %}
+                            Not signed in.
+                            {% endif %}
+                        </li> 
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">LOG OUT</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">LOG IN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'register' %}">REGISTER</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+            <div id='top_2'>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}">ACTIVE LISTING</a>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-link" id='category_nav' data-show='hide'>CATEGORY</span>
+                        <div id='category_dropdown'>
+                            <a href = "{% url 'category' 'Home and Garden' %}">HOME & GARDEN</a>
+                            <a href = "{% url 'category' 'Electronics' %}">ELECTRONICS</a>
+                            <a href = "{% url 'category' 'Fashion' %}">FASHION</a>
+                            <a href = "{% url 'category' 'Health and Beauty' %}">HEALTH & BEAUTY</a>
+                            <a href = "{% url 'category' 'Toys' %}">TOYS</a>
+                            <a href = "{% url 'category' 'Others' %}">OTHERS</a>
+                        </div>
+                    </li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'watchlist' %}">WATCHLIST</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'create' %}">CREATE LISTING</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <div id='page_heading'>
+            <h2>{% block heading %}{% endblock %}</h2>
+        </div>
+        <div class="main">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

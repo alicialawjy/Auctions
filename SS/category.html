@@ -1,0 +1,26 @@
+{% extends "auctions/layout.html" %}
+
+{% block heading %} {{ category }} {% endblock %}
+
+{% block body %}
+
+    {% for listing in listings_in_category %}
+    <a href="{% url 'listing' listing.id %}" class='link'>
+        <div class='wrapper'>
+            <div class="image">
+                <img src='/media/{{listing.id}}' class="index_listing">
+            </div>
+            <div class='text'>
+                <h3>{{ listing.title }}</h3>
+                <h5>Bid Price: £{{ listing.max_bid }} </h5>
+                {{ listing.description }}
+                <br><br>
+                Created {{ listing.date }}
+                <br>
+            </div>
+        </div>
+    </a>
+    <br>
+    {% endfor %}
+
+{% endblock %}

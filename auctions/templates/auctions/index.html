@@ -1,0 +1,30 @@
+{% extends "auctions/layout.html" %}
+
+{% block heading %} {{ view }} {% endblock %}
+
+{% block body %}
+<div id='listing_view'>
+    {% for listing in listings %}
+        <a href="{% url 'listing' listing.id %}" class='link'>
+            <div class='indiv_view'>
+                <div class='align_close_button'>
+                    {% if view == 'WATCHLIST' %}
+                    <form action="{% url 'watchlist' %}" method='post'>
+                        {% csrf_token %}
+                        <input type='hidden' name='listing_id' value='{{ listing.id }}'>
+                        <input type='submit' value=' X ' class='close'>
+                    </form>
+                    {% endif %}
+                    <img src='/media/{{listing.id}}' class="index_image">
+                </div> 
+                <div class='index_text'>
+                    <b class="index_title">{{ listing.title }}</b><br>
+                    <span class="index_price">£{{ listing.max_bid }}</span>
+                </div>  
+            </div>
+        </a>
+    {% empty %}
+    There are currently no listings to see here!
+    {% endfor %}
+</div>
+{% endblock %}

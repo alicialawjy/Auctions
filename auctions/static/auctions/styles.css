@@ -1,0 +1,361 @@
+/*/////////////////////////////////////////////////*/
+/*                  General styling                */
+/*/////////////////////////////////////////////////*/
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: white;
+}
+
+/* For headinds in page (eg. ACTIVE LISTING, HOME & GARDEN, WATCHLIST etc.) */
+#page_heading {
+    padding-top: 20px;
+    text-indent: 10px;
+    text-align: center;
+    letter-spacing: 3px;
+}
+
+/*/////////////////////////////////////////////////*/
+/*                Top Navbar Styling               */
+/*/////////////////////////////////////////////////*/
+/*////////////////////  General ///////////////////*/
+#top a:hover {
+    border: 1px solid white;
+    color: white;
+}
+
+/*//////////////  First Row (Black) ///////////////*/
+#top_1 {
+    background-color:rgb(19,26,34);
+    color: white;
+    padding-left: 20px;
+    display: flex;
+    vertical-align: middle;
+}
+
+
+#top_1 a{
+    text-decoration: none;
+    color: white;
+}
+
+/*------------------- Search Bar -----------------*/
+#search_bar{
+    margin: auto 50px; /* margin top+bottom: auto, left+right: 50px*/
+}
+
+#search {
+    border-radius: 20px;
+    width: 100%;
+    height: 35px;
+    text-indent: 10px;
+}
+
+/*--------- Welcome Text + username if logged in ---------*/
+#top_welcome{
+    font-size: 12px;
+}
+
+#top_username {
+    line-height: 90%;
+    margin: auto 15px;
+}
+
+/*------------- Login/Logout/Register Buttons ------------*/
+#login_status {
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-right: 10px;
+    margin-left: auto;
+    vertical-align: middle;
+}
+
+/*//////////////  Second Row (Grey) ///////////////*/
+#top_2 .nav {
+    background-color: rgb(35,47,62);
+    color: white;
+    justify-content: center;
+    vertical-align: middle;
+    font-size: 15px;
+    height: 40px;
+}
+
+.nav-link{
+    text-decoration: none;
+    color: white;
+    margin: auto 15px;
+    letter-spacing: 3px;
+    font-size: 12px;
+}
+
+.nav-link:hover {
+    border: 1px solid white;
+}
+
+/*--------- Category Button's dropdown list ---------*/
+#category_dropdown {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    background-color: white;
+    z-index: 1;
+    margin-left: 20px;
+}
+
+#category_dropdown a{
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+#category_dropdown a:hover {
+    background-color: rgb(223, 223, 223);
+}
+
+/*/////////////////////////////////////////////////////*/
+/*                  Index.html Styling                 */
+/*/////////////////////////////////////////////////////*/
+#listing_view{
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}
+
+.link {
+    text-decoration:none!important;
+    color: black!important;
+}
+
+.link:hover {
+    box-shadow: 2px 2px 5px rgba(0,0,0,.2)!important;
+}
+
+/*--------- Individual Listings in the view ---------*/
+.indiv_view {
+    width: 280px;
+    height: 420px;
+    margin: 5px;
+    background-color: rgb(245,245,245);
+    padding: 10px;
+}
+
+.index_image{
+    display: block;
+    height: 310px; 
+    width: 260px; 
+    float: center; 
+    margin: auto;
+}
+
+.index_text{
+    padding-top: 10px;
+}
+
+.index_price {
+    color: rgb(255,153,0);
+    font-size: 14px;
+}
+
+.index_title {
+    color: black;
+    font-size: 14px;
+}
+
+/*--- Close button on listing when in Watchlist view ---*/
+.align_close_button{
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top:10px;
+    right:10px;
+    background-color: white;
+    border-radius: 50%;
+    padding: 5px;
+    font-weight: lighter;
+
+}
+
+/*/////////////////////////////////////////////////*/
+/*              Create.html Styling                */
+/*/////////////////////////////////////////////////*/
+#new {
+    margin: 0 auto;
+    width: 50%;
+}
+
+#new_form {
+    width: 600px;
+    margin: auto;
+    padding: 10px;
+}
+
+label {
+    padding: 10px;
+    width:150px;
+    display: inline-block;
+    text-align: left;
+}
+
+#submit_new{
+    width:100%;
+    text-align: center;
+}
+
+/*/////////////////////////////////////////////////*/
+/*     Listing.html (Individual Listing View)      */
+/*/////////////////////////////////////////////////*/
+/*--------------------- General -------------------*/
+#centered {
+    padding: 20px;
+    margin: 0 auto;
+    width: 50%; 
+}
+
+/*///////// Top Section: About the Listing ////////*/
+/*---------------- Listing details ----------------*/
+.listing_wrapper {
+    display: flex;
+}
+
+#listing_image {
+    height: 550px;
+    width: 450px;
+}
+
+.text {
+    padding-left: 50px;
+    text-align: left;
+    width: 500px;
+}
+
+#listing_title {
+    border-bottom: 1px solid black;
+}
+
+.keyword {
+    font-size:20px;
+    font-weight:200;
+}
+
+/*------ Bidding + Bid Outcome Messages ------*/
+#bid_field {
+    border-radius: 20px;
+    text-indent: 10px;
+}
+
+#max_bid_message {
+    text-align: center;
+    color: orange;
+}
+
+#max_bid_message1 {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.message {
+    color:orange;
+    font-size: 14px;
+}
+
+/*-------- Buttons (Submit Bid, Comment) -----------*/
+.buttons {
+    background-color: rgb(3, 143, 3);
+    color: white;
+    padding: 5px 20px;
+    font-weight: bold;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+.buttons:hover {
+    background-color: green;
+}
+
+/*/// Bottom Section: Comments + Closing Listing ///*/
+/*-------------------- Comment ---------------------*/
+#comment_heading {
+    border-bottom: 1px solid black;
+}
+
+.comment {
+    border: 1px solid black;
+    border-radius: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.comment_author{
+    font-weight: bold;
+}
+
+#comment_textarea{
+    width: 100%;
+}
+
+/*--------------- Close Listing -----------------*/
+/* Div */
+#close_listing {
+    text-align: center;
+}
+/* Button */
+#close_listing_button {
+    background-color: red;
+}
+
+/*/////////////////////////////////////////////////*/
+/*            Login.html and Register.html         */
+/*/////////////////////////////////////////////////*/
+/* Form */
+#login_form {
+    width: 500px;
+    margin: 25px auto;
+    padding: 10px;
+    border: 1px solid black;
+    padding: 80px 100px;
+}
+
+/* Field headings (eg. USERNAME, PASSWORD etc) */
+.form_label {
+    font-size: 16px;
+    letter-spacing: 3px;
+}
+
+/* Individual input fields */
+.form-control {
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Submit button */
+#submit_login {
+    width: 100%;
+    background-color: black;
+    text-align: center;
+    color: white;
+    padding: 5px 20px;
+    font-weight: bold;
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+#submit_login:hover {
+    background-color: rgb(58, 58, 58);
+} 
+
+/* Text to register */
+#login_text {
+    text-align: center;
+}

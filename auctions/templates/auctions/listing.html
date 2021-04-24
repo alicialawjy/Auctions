@@ -1,0 +1,107 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+<br>
+<div id='centered'>
+    <div class=listing_wrapper>
+        <img src='/media/{{ listing.id }}' id='listing_image'>
+        <br><br>
+
+        <div class=text>
+            <div id='listing_title'><h2>{{ listing.title }}</h2></div>
+            <br>
+            {% if not listing.active %}
+            <div id='max_bid_message'>
+                <span id='max_bid_message1'>THIS LISTING IS CLOSED.</span> 
+                <br>
+                {% if max_bid_message%}
+                <span class='message'>{{ max_bid_message }}</span>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            <br>
+            <b class='keyword'>PRODUCT DETAIL</b> 
+            <br>
+            {{ listing.description }} <br><br>
+            <b class='keyword'>CATEGORY</b> 
+            <br>
+            {{ listing.category }} 
+            <br><br>
+
+            <br>
+            Highest bid:
+            <h4>£{{ listing.max_bid }}</h4>
+            {% if user.is_authenticated %}
+                {% if bid_message %}
+                    <div class='message'><em>
+                        {{ bid_message }} 
+                    </em></div>   
+                {% endif %}
+                {% if listing.active %}
+                    {{ no_of_bids }} bid(s) so far. Enter bid below:
+                    <form action="{% url 'listing' listing.id %}" method='post'>
+                        {% csrf_token %}
+                        <input type='number' name='bid_amount' placeholder="Bid" id='bid_field'>
+                        <input type='hidden' name='called_for' value='bid'>
+                        <input type='submit' value='BID' class='buttons'>
+                    </form>
+                {% endif %}
+                <br>
+            {% endif %}
+        </div>
+    </div>
+    <br>
+    <div id='listing_wrapper2'>
+        <em>Created on {{ listing.date }}</em>
+        {% if listing.active %}
+            {% if user.is_authenticated %}
+                {% if message %}
+                <div class='message'><em> {{ message }} </em></div>
+                {% endif %}
+
+                <form action="{% url 'listing' listing.id %}" method='post'>
+                    {% csrf_token %}
+                    <input type='hidden' name='called_for' value='watchlist'>
+                    <input type='submit' value='ADD TO WATCHLIST?' class='buttons'>
+                </form>
+            {% endif %}
+        {% endif %}
+        <br><br>
+        
+        <div id='comment_heading'><h4>Comments</h4></div> 
+        {% for comment in comments %}
+        <div class=comment>
+            <b class='comment_author'>{{ comment.author }}</b>
+            <br>
+            {{ comment.content}}
+        </div>
+        {% endfor %}
+
+        {% if listing.active %}
+            {% if user.is_authenticated %}
+            <form action="{% url 'listing' listing.id %}" method='post'>
+                {% csrf_token %}
+                <input type='hidden' name='called_for' value='comments'>
+                <textarea name='comment' id='comment_textarea' rows='2' placeholder="Type a comment..."></textarea>
+                <br>
+                <input type='submit' value='COMMENT' class='buttons'>
+            </form>
+            {% endif %}
+            <br><br>
+
+            {% if user.username == listing.owner.get.username %}
+                <div id='close_listing'>
+                    You are the owner of this listing. 
+                    Would you like to close the listing?   
+                    <br>
+                    <form action="{% url 'listing' listing.id %}" method='POST'>
+                        {% csrf_token %}
+                        <input type="submit" id='close_listing_button' class='buttons' name='called_for' value='CLOSE LISTING'>
+                    </form>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
